@@ -159,52 +159,40 @@ namespace CharGen
         }
 
         private void check_kf()
-        {
-            if (kasztok[comboBox1.SelectedIndex].Erő.Contains("+kf") && karakter.Er==18)
+        {            
+            if (kasztok[comboBox1.SelectedIndex].Erő.Contains("+kf"))
             {
-                er_kf_button.Enabled = true;
+                if ((kasztok[comboBox1.SelectedIndex].Erő.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Erő.Contains("k10+10+kf")) && karakter.Er==20)
+                {
+                    er_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Erő.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Erő.Contains("k10+10+kf")) && karakter.Er == 18)
+                {
+                    er_kf_button.Enabled = true;
+                }
+                else
+                    er_kf_button.Enabled = false;
                 karakter.Er += fajok[comboBox2.SelectedIndex].Er;
+                Erő_box.Text = karakter.Er.ToString();
             }
-            if (kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("+kf") && karakter.ÁK == 18)
+
+            if (kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("+kf"))
             {
-                ák_kf_button.Enabled = true;
+                if ((kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("k10+10+kf")) && karakter.ÁK == 20)
+                {
+                    ák_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("k10+10+kf")) && karakter.ÁK == 18)
+                {
+                    ák_kf_button.Enabled = true;
+                }
+                else
+                    ák_kf_button.Enabled = false;
                 karakter.ÁK += fajok[comboBox2.SelectedIndex].Ák;
+                ÁK_box.Text = karakter.ÁK.ToString();
             }
-            if (kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("+kf") && karakter.Gy == 18)
-            {
-                gy_kf_button.Enabled = true;
-                karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("+kf") && karakter.Ü == 18)
-            {
-                ü_kf_button.Enabled = true;
-                karakter.Ü += fajok[comboBox2.SelectedIndex].Ü;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Egészség.Contains("+kf") && karakter.Eg == 18)
-            {
-                eg_kf_button.Enabled = true;
-                karakter.Eg += fajok[comboBox2.SelectedIndex].Eg;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf") && karakter.Sz == 18)
-            {
-                sz_kf_button.Enabled = true;
-                karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("+kf") && karakter.Int == 18)
-            {
-                Int_kf_button.Enabled = true;
-                karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("+kf") && karakter.AE == 18)
-            {
-                ae_kf_button.Enabled = true;
-                karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
-            }
-            if (kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("+kf") && karakter.Asz == 18)
-            {
-                asz_kf_button.Enabled = true;
-                karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
-            }
+
+
 
 
         }
@@ -214,7 +202,7 @@ namespace CharGen
         private int Kocka(string kocka)
         {
             
-            string eredmény;            
+            //string eredmény;            
             switch (kocka)
             {
                case "k6+12":
