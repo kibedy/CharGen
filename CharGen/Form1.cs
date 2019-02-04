@@ -171,9 +171,7 @@ namespace CharGen
                     er_kf_button.Enabled = true;
                 }
                 else
-                    er_kf_button.Enabled = false;
-                karakter.Er += fajok[comboBox2.SelectedIndex].Er;
-                Erő_box.Text = karakter.Er.ToString();
+                    er_kf_button.Enabled = false;                
             }
 
             if (kasztok[comboBox1.SelectedIndex].Állóképesség.Contains("+kf"))
@@ -187,14 +185,142 @@ namespace CharGen
                     ák_kf_button.Enabled = true;
                 }
                 else
-                    ák_kf_button.Enabled = false;
-                karakter.ÁK += fajok[comboBox2.SelectedIndex].Ák;
-                ÁK_box.Text = karakter.ÁK.ToString();
+                    ák_kf_button.Enabled = false;                              
             }
 
+            if (kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("k10+10+kf")) && karakter.Gy == 20)
+                {
+                    gy_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Gyorsaság.Contains("k10+10+kf")) && karakter.Gy == 18)
+                {
+                    gy_kf_button.Enabled = true;
+                }
+                else
+                    gy_kf_button.Enabled = false;                                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("k10+10+kf")) && karakter.Ü == 20)
+                {
+                    ü_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Ügyesség.Contains("k10+10+kf")) && karakter.Ü == 18)
+                {
+                    ü_kf_button.Enabled = true;
+                }
+                else
+                    ü_kf_button.Enabled = false;  
+            }
+            
+            if (kasztok[comboBox1.SelectedIndex].Egészség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Egészség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Egészség.Contains("k10+10+kf")) && karakter.Eg == 20)
+                {
+                    eg_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Egészség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Egészség.Contains("k10+10+kf")) && karakter.Eg == 18)
+                {
+                    eg_kf_button.Enabled = true;
+                }
+                else
+                    eg_kf_button.Enabled = false;                                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else
+                    sz_kf_button.Enabled = false;                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else
+                    sz_kf_button.Enabled = false;                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k10+10+kf")) && karakter.Int==20)
+                {
+                    //.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k10+10+kf")) && karakter.Int == 18)
+                {
+                    //int_kf_button.Enabled = true;
+                }
+                else{}
+                    //int_kf_button.Enabled = false;                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else
+                    sz_kf_button.Enabled = false;                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
+                {
+                    sz_kf_button.Enabled = true;
+                }
+                else
+                    sz_kf_button.Enabled = false;                
+            }
+
+            karakter.Er += fajok[comboBox2.SelectedIndex].Er;     
+            karakter.ÁK += fajok[comboBox2.SelectedIndex].Ák;
+            karakter.Gy += fajok[comboBox2.SelectedIndex].Gy;
+            karakter.Ü += fajok[comboBox2.SelectedIndex].Ü;
+            karakter.Eg += fajok[comboBox2.SelectedIndex].Eg;
+            karakter.Sz += fajok[comboBox2.SelectedIndex].Sz;
+            karakter.Sz += fajok[comboBox2.SelectedIndex].Sz;
+            karakter.Int += fajok[comboBox2.SelectedIndex].Intell;
+            karakter.AE += fajok[comboBox2.SelectedIndex].Ae;
+            karakter.Asz += fajok[comboBox2.SelectedIndex].Asz;
 
 
-
+            Erő_box.Text = karakter.Er.ToString();
+            ÁK_box.Text = karakter.ÁK.ToString();
+            Gy_box.Text = karakter.Gy.ToString();
+            Ü_box.Text = karakter.Gy.ToString();
+            Eg_box.Text = karakter.Eg.ToString();
+            Sz_box.Text = karakter.Sz.ToString();
+            Int_box.Text = karakter.Int.ToString();
+            //Ae_box.Text = karakter.AE.ToString();        
+            //Asz_box.Text = karakter.Asz.ToString();
         }
 
         int szam;
