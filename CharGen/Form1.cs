@@ -92,24 +92,27 @@ namespace CharGen
                         string[] sorelem = sor.Split(';');
 
                         Kaszt kaszt = new Kaszt(
-                           sorelem[0].Replace(" ", "").ToLower(),
-                           sorelem[1].Replace(" ", "").ToLower(), 
-                           sorelem[2].Replace(" ", "").ToLower(),
-                           sorelem[3].Replace(" ", "").ToLower(),
-                           sorelem[4].Replace(" ", "").ToLower(),
-                           sorelem[5].Replace(" ", "").ToLower(),
-                           sorelem[6].Replace(" ", "").ToLower(),
-                           sorelem[7].Replace(" ", "").ToLower(),
-                           sorelem[8].Replace(" ", "").ToLower(),
-                           sorelem[9].Replace(" ", "").ToLower(),
-                           int.Parse(sorelem[10]),//this.fp_a = fp_a;
-                           int.Parse(sorelem[11]), //this.fp_sz = fp_sz;                                                                                               
-                           int.Parse(sorelem[12]),//this.ép_alap = ép_alap;
-                           int.Parse(sorelem[13]),//this.hm_sz = hm_sz;
-                           int.Parse(sorelem[14]),//this.hm_köt = hm_köt;
-                           int.Parse(sorelem[15]),//this.ké = ké;
-                           int.Parse(sorelem[16]),//this.té = té;
-                           int.Parse(sorelem[17])//this.vé = vé;
+                           sorelem[0].Replace(" ", "").ToLower(),//név
+                           sorelem[1].Replace(" ", "").ToLower(), //er
+                           sorelem[2].Replace(" ", "").ToLower(),//gy
+                           sorelem[3].Replace(" ", "").ToLower(),//ü
+                           sorelem[4].Replace(" ", "").ToLower(),//ák
+                           sorelem[5].Replace(" ", "").ToLower(),//eg
+                           sorelem[6].Replace(" ", "").ToLower(),//sz
+                           sorelem[7].Replace(" ", "").ToLower(),//int
+                           sorelem[8].Replace(" ", "").ToLower(),//ae
+                           sorelem[9].Replace(" ", "").ToLower(),//asz
+                           int.Parse(sorelem[10]),//ké
+                           int.Parse(sorelem[11]),//té
+                           int.Parse(sorelem[12]), //vé
+                           int.Parse(sorelem[13]),//cé
+                           int.Parse(sorelem[14]),//hm_sz
+                           int.Parse(sorelem[15]),//this.hm_köt = hm_köt;
+                           int.Parse(sorelem[16]),//kp_a
+                           int.Parse(sorelem[17]),//kp_sz
+                           int.Parse(sorelem[18]),//ép_a
+                           int.Parse(sorelem[19]),//fp_a
+                           int.Parse(sorelem[20])//fp_sz                           
                                );
                         kasztok.Add(kaszt);
                         comboBox1.Items.Add(kaszt);
@@ -129,6 +132,12 @@ namespace CharGen
 
             sr.Close();
             comboBox1.SelectedIndex = 0;
+        }
+
+        public void recalculate()
+        {
+            karakter.Ép = karakter.Ép_alap + tizfeletti(karakter.Eg);
+            this.Ép_max_label.Text = karakter.Ép.ToString();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -153,7 +162,18 @@ namespace CharGen
             karakter.Int = Kocka(kasztok[comboBox1.SelectedIndex].Intelligencia);
             karakter.AE = Kocka(kasztok[comboBox1.SelectedIndex].Akaraterő);
             karakter.Asz = Kocka(kasztok[comboBox1.SelectedIndex].Asztrál);
+            karakter.Fp_alap = kasztok[comboBox1.SelectedIndex].fp_a;
+            karakter.Ép_alap = kasztok[comboBox1.SelectedIndex].ép_alap;
+
+            this.Fp_alap_label.Text = karakter.Fp_alap.ToString();
+            this.Ép_alap_label.Text = karakter.Ép_alap.ToString();            
+            karakter.Ép = karakter.Ép_alap + tizfeletti(karakter.Eg);
+            this.Ép_max_label.Text = karakter.Ép.ToString();
+            recalculate();
             check_kf();
+            
+            this.Refresh();
+            ;
 
 
         }
@@ -262,42 +282,42 @@ namespace CharGen
             {
                 if ((kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k10+10+kf")) && karakter.Int==20)
                 {
-                    //.Enabled = true;
+                    Int_kf_button.Enabled = true;
                 }
                 else if ((!kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Intelligencia.Contains("k10+10+kf")) && karakter.Int == 18)
                 {
-                    //int_kf_button.Enabled = true;
-                }
-                else{}
-                    //int_kf_button.Enabled = false;                
-            }
-
-            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
-            {
-                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
-                {
-                    sz_kf_button.Enabled = true;
-                }
-                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
-                {
-                    sz_kf_button.Enabled = true;
+                    Int_kf_button.Enabled = true;
                 }
                 else
-                    sz_kf_button.Enabled = false;                
+                    Int_kf_button.Enabled = false;                
             }
 
-            if (kasztok[comboBox1.SelectedIndex].Szépség.Contains("+kf"))
+            if (kasztok[comboBox1.SelectedIndex].Akaraterő.Contains("+kf"))
             {
-                if ((kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz==20)
+                if ((kasztok[comboBox1.SelectedIndex].Akaraterő.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Akaraterő.Contains("k10+10+kf")) && karakter.AE==20)
                 {
-                    sz_kf_button.Enabled = true;
+                    ae_kf_button.Enabled = true;
                 }
-                else if ((!kasztok[comboBox1.SelectedIndex].Szépség.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Szépség.Contains("k10+10+kf")) && karakter.Sz == 18)
+                else if ((!kasztok[comboBox1.SelectedIndex].Akaraterő.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Akaraterő.Contains("k10+10+kf")) && karakter.AE == 18)
                 {
-                    sz_kf_button.Enabled = true;
+                    ae_kf_button.Enabled = true;
                 }
                 else
-                    sz_kf_button.Enabled = false;                
+                    ae_kf_button.Enabled = false;                
+            }
+
+            if (kasztok[comboBox1.SelectedIndex].Asztrál.Contains("+kf"))
+            {
+                if ((kasztok[comboBox1.SelectedIndex].Asztrál.Contains("k6+14+kf") || kasztok[comboBox1.SelectedIndex].Asztrál.Contains("k10+10+kf")) && karakter.Asz==20)
+                {
+                    asz_kf_button.Enabled = true;
+                }
+                else if ((!kasztok[comboBox1.SelectedIndex].Asztrál.Contains("k6+14+kf") && !kasztok[comboBox1.SelectedIndex].Asztrál.Contains("k10+10+kf")) && karakter.Asz == 18)
+                {
+                    asz_kf_button.Enabled = true;
+                }
+                else
+                    asz_kf_button.Enabled = false;                
             }
 
             karakter.Er += fajok[comboBox2.SelectedIndex].Er;     
@@ -319,8 +339,8 @@ namespace CharGen
             Eg_box.Text = karakter.Eg.ToString();
             Sz_box.Text = karakter.Sz.ToString();
             Int_box.Text = karakter.Int.ToString();
-            //Ae_box.Text = karakter.AE.ToString();        
-            //Asz_box.Text = karakter.Asz.ToString();
+            AE_box.Text = karakter.AE.ToString();        
+            Asz_box.Text = karakter.Asz.ToString();
         }
 
         int szam;
@@ -396,6 +416,26 @@ namespace CharGen
             }
             //eredmény = szam.ToString();
             return szam;
+        }
+
+        public int tizfeletti(int érték)
+        {
+            if (érték > 10)
+            {
+                return érték - 10;
+            }
+            else return 0;
+        }
+
+        private void Erő_box_TextChanged(object sender, EventArgs e)
+        {
+            recalculate();
+        }
+
+        private void Eg_box_TextChanged(object sender, EventArgs e)
+        {
+            recalculate();
+            ;
         }
     }
 }

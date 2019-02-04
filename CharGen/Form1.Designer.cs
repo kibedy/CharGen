@@ -160,6 +160,7 @@
             this.Erő_box.Size = new System.Drawing.Size(35, 20);
             this.Erő_box.TabIndex = 6;
             this.Erő_box.Text = "?";
+            this.Erő_box.TextChanged += new System.EventHandler(this.Erő_box_TextChanged);
             // 
             // ÁK_box
             // 
@@ -219,6 +220,7 @@
             this.Eg_box.Size = new System.Drawing.Size(35, 20);
             this.Eg_box.TabIndex = 14;
             this.Eg_box.Text = "?";
+            this.Eg_box.TextChanged += new System.EventHandler(this.Eg_box_TextChanged);
             // 
             // label7
             // 
